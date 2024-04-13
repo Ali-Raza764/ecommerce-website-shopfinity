@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* body,
+html,
+:root {
+  height: 100%;
+} */
+* {
+  margin: 0;
+  padding: 0;
+}
+.carousel .control-dots {
+  /* margin: 0 !important; */
+  margin-top: 10px !important; 
+}
