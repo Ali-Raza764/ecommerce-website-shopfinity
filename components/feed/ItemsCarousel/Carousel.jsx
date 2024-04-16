@@ -26,7 +26,7 @@ const Carousel = ({ children, slides }) => {
             {children}
           </div>
         </div>
-        <div className="absolute right-0 top-10">
+        <div className="absolute right-0 top-10 hidden md:block">
           <button className="embla__prev" onClick={scrollPrev}>
             <IoArrowBackCircleOutline
               size={50}

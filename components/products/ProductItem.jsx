@@ -6,7 +6,7 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 
 const ProductItem = ({}) => {
   return (
-    <div className="flex flex-col p-3 h-[20rem] flex-1 w-[16rem] ">
+    <div className="flex flex-col p-3 md:h-[20rem] h-auto flex-1 w-[12rem] md:w-[16rem] ">
       <div className="bg-gray-300 p-14 relative group">
         <Image
           height={300}

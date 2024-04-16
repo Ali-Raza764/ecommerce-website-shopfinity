@@ -3,10 +3,12 @@ import React from "react";
 
 const SaleHeader = () => {
   return (
-    <div className="flex items-center justify-center bg-black text-white text-md  px-1 gap-x-6">
-      <p>Summer Sale for all suits with free delievery - OF 50% ! </p>
+    <div className="flex items-center justify-center bg-black text-white md:text-md text-sm px-1 md:gap-x-6 ">
       <ShopNow link={"/shop"}>
-        <p className="underline ">Shop Now</p>
+        <p className="w-full text-ellipsis line-clamp-2 text-center text-md">
+          Summer Sale for all suits with free delievery - OF 50% !{" "}
+          <span className="underline font-semibold">Shop Now</span>
+        </p>
       </ShopNow>
     </div>
   );

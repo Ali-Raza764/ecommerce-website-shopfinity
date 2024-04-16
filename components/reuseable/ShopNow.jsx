@@ -5,14 +5,7 @@ import { twMerge } from "tailwind-merge";
 const ShopNow = ({ link, classname, children }) => {
   return (
     <Link href={link}>
-      <button
-        className={twMerge(
-          "font-semibold text-lg flex items-center ",
-          classname
-        )}
-      >
-        {children}
-      </button>
+      <button className="flex items-center">{children}</button>
     </Link>
   );
 };

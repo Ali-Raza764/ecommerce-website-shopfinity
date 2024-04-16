@@ -6,8 +6,8 @@ import { FaApple } from "react-icons/fa";
 
 const HeroItem = () => {
   return (
-    <div className="h-full w-full text-white font-sans flex items-center justify-between p-3 text-left">
-      <div className="h-full flex flex-col gap-y-4 w-1/2 p-4 justify-center">
+    <div className="text-white font-sans flex flex-col-reverse py-8 md:flex-row md:items-center md:text-left md:p-3">
+      <div className="md:w-1/2 md:p-4 flex flex-col justify-center items-center md:items-start ">
         <div className="flex items-center gap-x-3">
           <FaApple size={40} />
           <p className="product-name text-lg font-light">iPhone 15 pro</p>
@@ -18,7 +18,8 @@ const HeroItem = () => {
           </p>
         </div>
         <div className="shop-now text-left group">
-          <ShopNow link="/shop">
+          <ShopNow link="/shop" >
+         
             <p className="text-white border-b-2 border-white pb-2 transition-all  group-hover:border-gray-400">
               Shop Now
             </p>
@@ -29,9 +30,14 @@ const HeroItem = () => {
           </ShopNow>
         </div>
       </div>
-      <div className="image">
-        <Image height={300} width={
-          300} src="/images/hero.png" alt="iphone15" priority />
+      <div className="md:w-1/2 md:p-4 image">
+        <Image
+          height={300}
+          width={300}
+          src="/images/hero.png"
+          alt="iphone15"
+          priority
+        />
       </div>
     </div>
   );

@@ -6,12 +6,14 @@ import { Carousel } from "react-responsive-carousel";
 
 const Hero = () => {
   return (
-    <div className="flex items-center justify-center bg-black w-[80%] h-full">
+    <div className="flex items-center justify-center bg-black w-full md:w-[80%]  h-[60vh] md:h-full overflow-hidden box-border">
       <Carousel
         showArrows={false}
         infiniteLoop={true}
         showThumbs={false}
+        showStatus={false}
         autoPlay
+        className="w-full p-3"
       >
         <HeroItem />
         <HeroItem />

@@ -1,11 +1,18 @@
 "use client";
 import { useState } from "react";
 import { MdSearch } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 const Search = () => {
   const [query, setQuery] = useState("");
+  const router = useRouter();
   return (
-    <div className="flex items-center justify-center bg-gray-100 gap-x-3 text-gray-800 p-1 px-2">
+    <form
+      onSubmit={() => {
+        router.push(`/search?q=${query}`);
+      }}
+      className="hidden md:flex items-center justify-center bg-gray-100 gap-x-3 text-gray-800 p-1 px-2"
+    >
       <input
         type="text"
         className=" w-full h-8 px-2 border-2 border-none outline-none rounded-md bg-transparent "
@@ -16,7 +23,7 @@ const Search = () => {
       <button>
         <MdSearch size={30} className="text-gray-400" />
       </button>
-    </div>
+    </form>
   );
 };
 

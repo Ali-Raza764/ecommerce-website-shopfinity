@@ -8,7 +8,7 @@ const index = ({ children, title, text  }) => {
         <p>{title}</p>
       </div>
       <div className="w-full">
-        <h2 className="text-4xl font-bold">{text}</h2>
+        <h2 className="text-3xl md:text-4xl font-bold">{text}</h2>
       </div>
 
       <Carousel children={children} />

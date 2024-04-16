@@ -1,29 +1,12 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { links } from "./links";
+
 const Navbar = () => {
   const pathname = usePathname();
-  const links = [
-    {
-      name: "Home",
-      href: "/",
-    },
-    {
-      name: "All Products",
-      href: "/products",
-    },
-    {
-      name: "Contact",
-      href: "/contact",
-    },
-    {
-      name: "About",
-      href: "/about",
-    },
-  ];
-
   return (
-    <div className="flex items-center justify-center gap-x-7">
+    <div className="items-center justify-center gap-x-7">
       {links.map((link) => (
         <Link
           key={link.name}

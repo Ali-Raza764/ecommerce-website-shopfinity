@@ -13,5 +13,5 @@ html,
 }
 .carousel .control-dots {
   /* margin: 0 !important; */
-  margin-top: 10px !important; 
+  margin: -5px 0 !important;
 }

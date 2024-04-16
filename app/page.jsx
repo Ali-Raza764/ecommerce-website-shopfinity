@@ -3,16 +3,18 @@ import CategorySideBar from "@/components/feed/CategorySideBar";
 import FeaturedProduct from "@/components/feed/FeaturedProduct";
 import Hero from "@/components/feed/Hero";
 import ItemsCarousel from "@/components/feed/ItemsCarousel";
-import NewArrivals from "@/components/feed/NewArrivals";
+// import NewArrivals from "@/components/feed/NewArrivals";
 import OurSpeciality from "@/components/feed/OurSpeciality";
 import ProductItem from "@/components/products/ProductItem";
 import SectionSeparator from "@/components/reuseable/SectionSeparator";
 import React from "react";
 
+// TODO Add responsiveness to the homepage  
+
 const Home = () => {
   const dummyArray = Array.from({ length: 10 }, (v, k) => k);
   return (
-    <div className="h-full w-full px-11">
+    <div className="h-full w-full md:px-11 px-5">
       <CategorySideBar>
         <Hero />
       </CategorySideBar>

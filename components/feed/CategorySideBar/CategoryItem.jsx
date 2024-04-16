@@ -1,10 +1,17 @@
-import React from 'react'
+import Link from "next/link";
+import React from "react";
 
-const CategoryItem = () => {
+const CategoryItem = ({ name, link }) => {
   return (
-    <div className='px-4 py-1 text-md cursor-pointer
-    hover:bg-gray-100 transition w-max '>CategoryItem</div>
-  )
-}
+    <Link href={link}>
+      <div
+        className="px-4 py-1 text-md cursor-pointer
+    hover:bg-gray-100 transition w-max "
+      >
+        {name}
+      </div>
+    </Link>
+  );
+};
 
-export default CategoryItem
+export default CategoryItem;
