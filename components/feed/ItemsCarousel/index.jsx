@@ -1,6 +1,6 @@
 import Carousel from "./Carousel";
 
-const index = ({ children, title, text  }) => {
+const index = ({ children, title, text }) => {
   return (
     <div className="w-full h-max flex flex-col gap-y-3 relative">
       <div className="title text-red-500 font-bold text-xl flex items-center gap-x-3">
@@ -11,7 +11,7 @@ const index = ({ children, title, text  }) => {
         <h2 className="text-3xl md:text-4xl font-bold">{text}</h2>
       </div>
 
-      <Carousel children={children} />
+      <Carousel>{children}</Carousel>
     </div>
   );
 };

@@ -28,7 +28,11 @@ const CategorySideBar = ({ children }) => {
     <div className="flex items-center w-full py-4">
       <div className="w-1/5 border-r border-gray-500 hidden md:flex flex-col md:py-8 gap-y-2">
         {categories.map((category) => (
-          <CategoryItem name={category.name} link={category.link} />
+          <CategoryItem
+            name={category.name}
+            link={category.link}
+            key={categories.name}
+          />
         ))}
       </div>
       <div className="w-full flex items-center justify-center">{children}</div>

@@ -34,6 +34,7 @@ const About = () => {
                   "h-[12rem] w-[25%] border border-gray-400 rounded-md p-3 " +
                   item.style
                 }
+                key={item.stat}
               >
                 <div className="flex flex-col items-center gap-4">
                   <div className="icon p-2 rounded-full bg-gray-400">
