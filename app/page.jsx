@@ -8,8 +8,9 @@ import OurSpeciality from "@/components/feed/OurSpeciality";
 import ProductItem from "@/components/products/ProductItem";
 import SectionSeparator from "@/components/reuseable/SectionSeparator";
 import React from "react";
+import Search from "@/components/shared/Header/Search";
 
-// TODO Add responsiveness to the homepage  
+// TODO Add responsiveness to the homepage
 
 const Home = () => {
   const dummyArray = Array.from({ length: 10 }, (v, k) => k);
@@ -18,6 +19,10 @@ const Home = () => {
       <CategorySideBar>
         <Hero />
       </CategorySideBar>
+
+      <div className="search px-3 md:hidden my-3">
+        <Search />
+      </div>
 
       <div className="w-full flex flex-col items-center justify-center relative my-11">
         <ItemsCarousel title={"Today's"} text={"Flash Sales"}>
@@ -34,7 +39,7 @@ const Home = () => {
 
       <SectionSeparator />
 
-      <div className="w-full flex flex-col items-center justify-center relative my-11">
+      <div className="w-full hidden md:flex flex-col items-center justify-center relative my-11">
         <ItemsCarousel title={"Categories"} text={"Browse By Category"}>
           {dummyArray.map((item) => (
             <div className="embla__slide" key={item}>

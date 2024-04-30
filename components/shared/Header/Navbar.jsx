@@ -6,7 +6,7 @@ import { links } from "./links";
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <div className="flex items-center justify-center gap-x-7">
+    <div className="flex items-center justify-center gap-x-6">
       {links.map((link) => (
         <Link
           key={link.name}

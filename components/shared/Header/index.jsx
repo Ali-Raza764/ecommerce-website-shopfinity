@@ -11,22 +11,23 @@ const Header = ({ children }) => {
       <header className="w-full ">
         <SaleHeader />
 
-        <div className="w-full h-14 border-b border-black flex items-center justify-between px-3 md:px-11 p-2">
+        <div className="w-full h-14 border-b border-black flex items-center justify-between px-3 md:px-2 lg:px-11 p-2">
           <div className="mobile-nav md:hidden">
             <MobileNavbar />
           </div>
 
-          <div className="logo font-bold text-xl">SHOPFINITY</div>
+          <div className="logo font-bold text-xl ml-2">SHOPFINITY</div>
 
           <div className="simple-nav hidden md:block">
             <Navbar />
           </div>
 
           <div className="search flex items-center justify-center gap-x-3">
-            <Search />
+            <div className="hidden md:block">
+              <Search />
+            </div>
             <UserControls />
           </div>
-
         </div>
       </header>
       {children}

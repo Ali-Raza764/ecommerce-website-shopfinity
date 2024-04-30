@@ -3,12 +3,12 @@ import React from "react";
 
 const FeaturedProduct = () => {
   return (
-    <div className="featuredProduct w-full h-[35rem] bg-gradient-to-r from-black to-gray-900 flex items-center justify-between my-11">
-      <div className="w-1/2 p-11 h-full flex flex-col justify-center gap-y-11 text-left">
+    <div className="featuredProduct w-full md:h-screen p-4 bg-gradient-to-r from-black to-gray-900 flex flex-col-reverse md:flex-row items-center justify-between my-11 py-8 gap-4">
+      <div className="md:w-1/2  md:p-11 flex flex-col justify-center gap-y-4 md:gap-y-11 text-left">
         <h2 className="text-green-500 font-semibold font-sans text-2xl">
           Music
         </h2>
-        <p className="text-5xl font-medium text-white">
+        <p className="md:text-5xl text-4xl font-medium text-white">
           Enhance Your Music Experiance
         </p>
         <div className="text-lg text-gray-300 font-sans">
@@ -18,12 +18,12 @@ const FeaturedProduct = () => {
           Buy Now
         </button>
       </div>
-      <div className="w-1/2">
+      <div className="md:w-1/2  p-4">
         <Image
           height={600}
-          width={400}
+          width={600}
           src={"/images/featured-product.png"}
-          className="pl-14 shadow-2xl shadow-gray-400"
+          className="md:pl-14 shadow-2xl shadow-gray-400"
           alt="Featured Product"
         />
       </div>

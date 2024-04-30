@@ -9,7 +9,7 @@ export const links = [
   },
   {
     name: "All Products",
-    href: "/products",
+    href: "/allproducts",
     icon: MdShoppingBag,
   },
   {
