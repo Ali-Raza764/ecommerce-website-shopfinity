@@ -15,10 +15,11 @@ html,
   /* margin: 0 !important; */
   margin: -5px 0 !important;
 }
-
-.overflowed-product-images::-webkit-scrollbar{
-  width: 5px;
-}
-.overflowed-product-images::-webkit-scrollbar-thumb{
-  background: gray;
+@media (min-width: 720px) {
+  .overflowed-product-images::-webkit-scrollbar {
+    width: 5px;
+  }
+  .overflowed-product-images::-webkit-scrollbar-thumb {
+    background: gray;
+  }
 }

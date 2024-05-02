@@ -1,11 +1,11 @@
 import "../globals.css";
 
 export const metadata = {
-  title: "Admin",
-  description: "Admin  Dashboard and cms",
+  title: "Auth",
+  description: "Authenticate to shopfinity",
 };
 
-export default function RootLayout({ children }) {
+export default function AuthenticationLayout({ children }) {
   return (
     <html lang="en">
       <body>{children}</body>
