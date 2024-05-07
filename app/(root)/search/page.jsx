@@ -1,6 +1,7 @@
 import ProductItem from "@/components/products/ProductItem";
 import Search from "@/components/shared/Header/Search";
 import PaginationControls from "./PaginationControls";
+import { Suspense } from "react";
 
 const SearchPage = ({ searchParams }) => {
   const dummyArray = Array.from({ length: 30 }, (v, k) => k);
@@ -31,11 +32,13 @@ const SearchPage = ({ searchParams }) => {
       </div>
 
       <div className="pagination my-6">
-        <PaginationControls
-          hasNextpage={end < dummyArray.length}
-          hasPreviousPage={start > 0}
-          dataLength={dummyArray.length}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <PaginationControls
+            hasNextpage={end < dummyArray.length}
+            hasPreviousPage={start > 0}
+            dataLength={dummyArray.length}
+          />
+        </Suspense>
       </div>
     </div>
   );

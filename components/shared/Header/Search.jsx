@@ -21,6 +21,8 @@ const Search = () => {
     router.push(`${"/search"}?${params.toString()}`);
   };
   return (
+
+
     <form
       onSubmit={submitHandler}
       className="flex flex-1 items-center justify-center bg-gray-100 gap-x-3 text-gray-800 p-1 px-2"
@@ -37,6 +39,7 @@ const Search = () => {
         <MdSearch size={30} className="text-gray-400" />
       </button>
     </form>
+    
   );
 };
 

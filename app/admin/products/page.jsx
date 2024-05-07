@@ -12,7 +12,7 @@ const AllProductsPage = () => {
       </div>
       <div className="products-container container flex items-center justify-center flex-col gap-3">
         {dummyArray.map((i) => {
-          return <Product />;
+          return <Product key={i}/>;
         })}
       </div>
     </div>

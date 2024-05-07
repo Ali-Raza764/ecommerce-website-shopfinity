@@ -7,7 +7,7 @@ import ItemsCarousel from "@/components/feed/ItemsCarousel";
 import OurSpeciality from "@/components/feed/OurSpeciality";
 import ProductItem from "@/components/products/ProductItem";
 import SectionSeparator from "@/components/reuseable/SectionSeparator";
-import React from "react";
+import React, { Suspense } from "react";
 import Search from "@/components/shared/Header/Search";
 
 // TODO Add responsiveness to the homepage
@@ -21,7 +21,9 @@ const Home = () => {
       </CategorySideBar>
 
       <div className="search px-3 md:hidden my-3">
-        <Search />
+        <Suspense fallback={<div>Loading</div>}>
+          <Search />
+        </Suspense>
       </div>
 
       <div className="w-full flex flex-col items-center justify-center relative my-11">

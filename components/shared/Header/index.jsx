@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Navbar from "./Navbar";
 import Search from "./Search";
 import UserControls from "./UserControls";
@@ -24,7 +24,10 @@ const Header = ({ children }) => {
 
           <div className="search flex items-center justify-center gap-x-3">
             <div className="hidden md:block">
+              <Suspense fallback={<div>Loading</div>}>
+
               <Search />
+              </Suspense>
             </div>
             <UserControls />
           </div>
