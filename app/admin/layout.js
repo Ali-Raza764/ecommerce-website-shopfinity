@@ -1,4 +1,4 @@
-import AdminSidebar from "@/components/adminComponents/AdminSidebar";
+import AdminSidebar from "./_components/AdminSidebar";
 import "../globals.css";
 
 export const metadata = {

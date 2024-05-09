@@ -1,4 +1,4 @@
-import Product from "@/components/adminComponents/Product";
+import Product from "../_components/Product";
 import React from "react";
 
 const AllProductsPage = () => {

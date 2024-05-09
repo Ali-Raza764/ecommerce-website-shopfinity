@@ -25,6 +25,6 @@ export const statsData = [
   {
     icon: FcSalesPerformance,
     stat: "33K",
-    desc: "Monthly Sales On Our Site",
+    desc: "Large Sales",
   },
 ];

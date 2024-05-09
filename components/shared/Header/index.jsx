@@ -11,7 +11,7 @@ const Header = ({ children }) => {
       <header className="w-full ">
         <SaleHeader />
 
-        <div className="w-full h-14 border-b border-black flex items-center justify-between px-3 md:px-2 lg:px-11 p-2">
+        <div className="w-full h-14 border-b border-black flex items-center justify-between px-3 md:px-2 lg:px-11 p-2 ">
           <div className="mobile-nav md:hidden">
             <MobileNavbar />
           </div>
@@ -22,7 +22,7 @@ const Header = ({ children }) => {
             <Navbar />
           </div>
 
-          <div className="search flex items-center justify-center gap-x-3">
+          <div className="search flex items-center justify-between gap-3">
             <div className="hidden md:block">
               <Suspense fallback={<div>Loading</div>}>
 

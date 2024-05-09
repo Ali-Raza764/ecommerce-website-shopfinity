@@ -24,6 +24,7 @@ const About = () => {
             width={700}
             src={"/images/about-1.jpg"}
             alt="Image-1"
+            priority
           />
         </div>
       </div>
