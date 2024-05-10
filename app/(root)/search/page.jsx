@@ -25,7 +25,8 @@ const SearchPage = ({ searchParams }) => {
         </h1>
       </div>
 
-      <div className="container flex items-center flex-wrap justify-center">
+      <div className="container grid grid-cols-2 sm:grid-cols-3 grid-items-center gap-2 md:flex items-center justify-center flex-wrap">
+      {/* <div className="container flex items-center flex-wrap justify-center"> */}
         {entries.map((item, i) => {
           return <ProductItem key={i} />;
         })}

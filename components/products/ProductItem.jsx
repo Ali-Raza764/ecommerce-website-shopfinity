@@ -8,8 +8,8 @@ import Link from "next/link";
 const ProductItem = ({}) => {
   return (
     <Link href={"/productdetails/1"}>
-      <div className="flex flex-col p-3 md:h-[20rem] h-auto w-[12rem] md:w-[16rem] ">
-        <div className="bg-gray-300 p-4 md:p-14 relative group">
+      <div className="flex flex-col p-3 md:h-[20rem] h-auto min-w-[11rem] w-auto max-w-[14rem] md:w-[16rem] ">
+        <div className="bg-gray-300 p-4 relative group">
           <Image
             height={500}
             width={500}
