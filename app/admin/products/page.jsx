@@ -1,18 +1,31 @@
+import Link from "next/link";
 import Product from "../_components/Product";
 import React from "react";
+import { MdAdd } from "react-icons/md";
 
 const AllProductsPage = () => {
   const dummyArray = Array.from({ length: 10 }, (v, k) => k);
 
   return (
     <div className="w-full h-full">
-      <div className="flex items-center justify-between mb-3">
-        <h1>All Products</h1>
-        <h2>Total: 50</h2>
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold font-sans">All Products</h1>
+        <p>Total: {dummyArray.length}</p>
       </div>
-      <div className="products-container container flex items-center justify-center flex-col gap-3">
+
+      <Link
+        href={"/admin/products/new"}
+        className="w-24 h-24 flex flex-col items-center justify-center bg-red-500 text-white rounded-md mt-6 group transition hover:bg-red-400"
+      >
+        <MdAdd className="text-4xl group-hover:text-6xl transition" />
+        <h3 className="text-xl font-semibold font-sans group-hover:hidden transition">
+          Create
+        </h3>
+      </Link>
+
+      <div className="products-container container flex items-center justify-center flex-col gap-4 mt-6">
         {dummyArray.map((i) => {
-          return <Product key={i}/>;
+          return <Product key={i} />;
         })}
       </div>
     </div>

@@ -1,0 +1,2 @@
+1. The app is made by implementing modern features of nextjs.
+2. Each component of any page is responsible for fetching and mutating its own data.

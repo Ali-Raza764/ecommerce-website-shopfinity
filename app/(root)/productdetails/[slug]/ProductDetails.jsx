@@ -70,16 +70,21 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <div className="flex">
+      <div className="w-full flex items-center justify-between">
         <span className="title-font font-medium text-2xl text-gray-900">
           $58.00
         </span>
-        <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-          Button
-        </button>
-        <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-          <FaHeart />
-        </button>
+        <div className="flex items-center gap-3">
+          <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded transition">
+            Buy Now
+          </button>
+          <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded transition">
+            Add to Cart
+          </button>
+          <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 hover:scale-110 transition">
+            <FaHeart />
+          </button>
+        </div>
       </div>
     </div>
   );

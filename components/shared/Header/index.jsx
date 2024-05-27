@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import Navbar from "./Navbar";
-import Search from "./Search";
+import Search from "@/components/reuseable/Search";
 import UserControls from "./UserControls";
 import SaleHeader from "./SaleHeader";
 import MobileNavbar from "./MobileNavbar";
@@ -11,22 +11,21 @@ const Header = ({ children }) => {
       <header className="w-full ">
         <SaleHeader />
 
-        <div className="w-full h-14 border-b border-black flex items-center justify-between px-3 md:px-2 lg:px-11 p-2 ">
-          <div className="mobile-nav md:hidden">
+        <div className="w-full h-14 border-b border-black flex items-center justify-between  lg:px-4 p-2">
+          <div className="mobile-nav lg:hidden">
             <MobileNavbar />
           </div>
 
-          <div className="logo font-bold text-xl ml-2">SHOPFINITY</div>
+          <div className="logo font-bold sm:text-xl md:ml-2 ml-1">SHOPFINITY</div>
 
-          <div className="simple-nav hidden md:block">
+          <div className="simple-nav hidden lg:block">
             <Navbar />
           </div>
 
           <div className="search flex items-center justify-between gap-3">
             <div className="hidden md:block">
               <Suspense fallback={<div>Loading</div>}>
-
-              <Search />
+                <Search />
               </Suspense>
             </div>
             <UserControls />

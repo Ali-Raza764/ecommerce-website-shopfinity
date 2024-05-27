@@ -36,7 +36,7 @@ const ImagesShowcase = () => {
   };
 
   return (
-    <div className="lg:w-1/2 w-full images flex justify-center items-center gap-3 flex-wrap-reverse md:flex-nowrap">
+    <div className="lg:w-1/2 w-full images flex justify-center lg:justify-start items-center gap-3 flex-wrap-reverse md:flex-nowrap">
       <div className="available_images md:h-[25rem] lg:w-auto flex md:flex-col items-center justify-center gap-2 overflow-auto box-border overflowed-product-images">
         {Image_data.otherImages.map((image) => {
           return (

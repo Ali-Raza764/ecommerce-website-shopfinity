@@ -5,7 +5,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 
 const Product = ({ title, imageUrl, id }) => {
   return (
-    <div className="h-12 w-full flex items-center border p-2 justify-between">
+    <div className="w-full h-12 p-2 flex items-center justify-between gap-4 border shadow hover:-translate-y-2 transition-all duration-300 hover:bg-gray-100">
       <div className="flex items-center gap-3">
         <Image
           src={"/images/hero.png"}

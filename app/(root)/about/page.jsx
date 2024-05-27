@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { statsData } from "./data";
-import OurSpeciality from "@/components/feed/OurSpeciality";
+import OurSpeciality from "@/components/reuseable/OurSpeciality";
 
 const About = () => {
   return (

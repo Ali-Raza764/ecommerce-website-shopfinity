@@ -30,7 +30,7 @@ const MobileNavbar = () => {
         <div
           className={`menu fixed top-0 ${
             open ? "left-0" : "-left-[1000px]"
-          } bg-white h-screen w-[70vw] transition duration-500 z-50 p-3`}
+          } bg-white h-screen w-[70vw] transition duration-1000 z-50 p-3`}
         >
           <div className="w-full flex items-center justify-between">
             <h2 className="font-semibold text-xl">SHOPFINITY</h2>

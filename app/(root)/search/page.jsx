@@ -1,10 +1,11 @@
-import ProductItem from "@/components/products/ProductItem";
-import Search from "@/components/shared/Header/Search";
-import PaginationControls from "./PaginationControls";
+import ProductItem from "@/components/reuseable/ProductItem";
+import Search from "@/components/reuseable/Search";
+import PaginationControls from "@/components/reuseable/PaginationControls";
 import { Suspense } from "react";
 
 const SearchPage = ({ searchParams }) => {
   const dummyArray = Array.from({ length: 30 }, (v, k) => k);
+
   const query = searchParams?.query || "";
   const page = searchParams["page"] ?? "1";
   const per_page = searchParams["per_page"] ?? "10";
@@ -26,7 +27,7 @@ const SearchPage = ({ searchParams }) => {
       </div>
 
       <div className="container grid grid-cols-2 sm:grid-cols-3 grid-items-center gap-2 md:flex items-center justify-center flex-wrap">
-      {/* <div className="container flex items-center flex-wrap justify-center"> */}
+        {/* <div className="container flex items-center flex-wrap justify-center"> */}
         {entries.map((item, i) => {
           return <ProductItem key={i} />;
         })}
@@ -38,6 +39,9 @@ const SearchPage = ({ searchParams }) => {
             hasNextpage={end < dummyArray.length}
             hasPreviousPage={start > 0}
             dataLength={dummyArray.length}
+            page={page}
+            per_page={per_page}
+            query={query}
           />
         </Suspense>
       </div>

@@ -1,5 +1,4 @@
 import AdminSidebar from "./_components/AdminSidebar";
-import "../globals.css";
 
 export const metadata = {
   title: "Admin",
