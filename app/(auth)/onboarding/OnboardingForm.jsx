@@ -40,9 +40,8 @@ const OnboardingForm = ({ email, name, id }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto p-4 shadow-md rounded bg-white"
+      className="max-w-md mx-auto p-4 shadow-md rounded bg-white md:my-6 my-3"
     >
-
       <div className="mb-4">
         <label className="block text-gray-700">Name</label>
         <input
@@ -52,7 +51,7 @@ const OnboardingForm = ({ email, name, id }) => {
           onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded mt-1"
           required
-          disabled={loading}
+          disabled
         />
       </div>
 
@@ -65,7 +64,7 @@ const OnboardingForm = ({ email, name, id }) => {
           onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded mt-1"
           required
-          disabled={loading}
+          disabled
         />
       </div>
 
@@ -97,7 +96,7 @@ const OnboardingForm = ({ email, name, id }) => {
 
       <button
         type="submit"
-        className="w-full p-2 bg-blue-600 text-white rounded mt-2 hover:bg-blue-700 transition"
+        className="w-full p-2 bg-red-500 text-white rounded mt-2 hover:bg-red-400 transition"
         disabled={loading}
       >
         Submit

@@ -1,8 +1,17 @@
-import Link from "next/link";
-import React from "react";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-const Dashboard = () => {
-  return <div className="w-full h-full">Analytics Data</div>;
-};
+export default async function AdminDashboard() {
+  const { sessionClaims } = auth();
 
-export default Dashboard;
+  if (sessionClaims?.metadata.role !== "admin") {
+    redirect("/");
+  }
+
+  return (
+    <>
+      <h1>This is the admin dashboard</h1>
+      <p>This page is restricted to users with the admin role.</p>
+    </>
+  );
+}
