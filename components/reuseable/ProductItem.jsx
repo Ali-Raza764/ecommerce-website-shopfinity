@@ -4,7 +4,7 @@ import { IoStarSharp } from "react-icons/io5";
 import { CiHeart, CiShoppingCart } from "react-icons/ci";
 import Link from "next/link";
 
-const ProductItem = ({}) => {
+const ProductItem = ({ name, price, images, excerpt, description, id }) => {
   return (
     <Link href={"/productdetails/1"}>
       <div className="flex flex-col p-3 md:h-[20rem] h-auto min-w-[11rem] w-auto max-w-[14rem] md:w-[16rem] ">
@@ -13,7 +13,7 @@ const ProductItem = ({}) => {
             height={500}
             width={500}
             alt="product-image"
-            src={"/images/product-1.png"}
+            src={images[0]}
           />
           <div>
             <div className="absolute flex-col items-center justify-center gap-y-4  group-hover:flex transition top-1 right-1 hover:scale-110">
@@ -29,14 +29,14 @@ const ProductItem = ({}) => {
         </div>
         <div className="details flex flex-col h-full text-left my-2 gap-2">
           <h3
-            className="text-xl font-semibod font-medium font-sans"
+            className="text-xl font-semibod font-medium font-sans text-ellipsis line-clamp-1"
             aria-label="product-name"
           >
-            Gaming Phone
+            {name}
           </h3>
           <p className="text-md font-semibold font-sans">
-            Price: <span className="text-red-500"> $100</span>{" "}
-            <span className="ml-5 line-through text-gray-600">$400</span>
+            Price: <span className="text-red-500"> {price}</span>
+            <span className="ml-5 line-through text-gray-600">{price}</span>
           </p>
           <div className="stats flex items-center gap-3">
             <div>Review: </div>

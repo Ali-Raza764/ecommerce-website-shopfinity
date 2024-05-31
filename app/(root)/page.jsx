@@ -7,8 +7,11 @@ import OurSpeciality from "@/components/reuseable/OurSpeciality";
 import AllProductsCarousel from "./_components/home/AllProductsCarousel";
 import SectionSeparator from "@/components/reuseable/SectionSeparator";
 import { Suspense } from "react";
+import { fetchAllProducts } from "@/utils/fetchAllItems";
 
-const Home = () => {
+const Home = async () => {
+  const products = await fetchAllProducts();
+
   return (
     <div className="h-full w-full md:px-11 px-5">
       <CategorySideBar>
@@ -21,17 +24,16 @@ const Home = () => {
         </Suspense>
       </div>
 
-      <Sales />
+      <Sales products={products} />
       <SectionSeparator />
 
       <FeaturedProduct />
       <SectionSeparator />
 
-      <AllProductsCarousel />
+      <AllProductsCarousel products={products} />
       <SectionSeparator />
 
       <OurSpeciality />
-
     </div>
   );
 };

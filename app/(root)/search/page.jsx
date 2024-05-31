@@ -2,18 +2,34 @@ import ProductItem from "@/components/reuseable/ProductItem";
 import Search from "@/components/reuseable/Search";
 import PaginationControls from "@/components/reuseable/PaginationControls";
 import { Suspense } from "react";
+import { fetchAllProducts } from "@/utils/fetchAllItems";
 
-const SearchPage = ({ searchParams }) => {
-  const dummyArray = Array.from({ length: 30 }, (v, k) => k);
+const fetchData = async (query) => {
+  try {
+    const res = await fetchAllProducts();
+    const products = res.filter((product) => {
+      return (
+        product.name.toLowerCase().includes(query.toLowerCase()) ||
+        product.excerpt.toLowerCase().includes(query.toLowerCase()) ||
+        product.description.toLowerCase().includes(query.toLowerCase())
+      );
+    });
+    return products;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
+const SearchPage = async ({ searchParams }) => {
   const query = searchParams?.query || "";
+  const products = await fetchData(query);
   const page = searchParams["page"] ?? "1";
   const per_page = searchParams["per_page"] ?? "10";
 
   const start = (Number(page) - 1) * Number(per_page);
   const end = start + Number(per_page);
 
-  const entries = dummyArray.slice(start, end);
+  const entries = products.slice(start, end);
 
   return (
     <div className="w-full min-h-screen py-3 md:px-8">
@@ -29,16 +45,26 @@ const SearchPage = ({ searchParams }) => {
       <div className="container grid grid-cols-2 sm:grid-cols-3 grid-items-center gap-2 md:flex items-center justify-center flex-wrap">
         {/* <div className="container flex items-center flex-wrap justify-center"> */}
         {entries.map((item, i) => {
-          return <ProductItem key={i} />;
+          return (
+            <ProductItem
+              key={item._id}
+              id={item._id}
+              name={item.name}
+              images={item.images}
+              description={item.description}
+              excerpt={item.excerpt}
+              price={item.price}
+            />
+          );
         })}
       </div>
 
       <div className="pagination my-6">
         <Suspense fallback={<div>Loading...</div>}>
           <PaginationControls
-            hasNextpage={end < dummyArray.length}
+            hasNextpage={end < products.length}
             hasPreviousPage={start > 0}
-            dataLength={dummyArray.length}
+            dataLength={products.length}
             page={page}
             per_page={per_page}
             query={query}

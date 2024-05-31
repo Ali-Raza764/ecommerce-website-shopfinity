@@ -1,15 +1,21 @@
 import ProductItem from "@/components/reuseable/ProductItem";
 import ItemsCarousel from "@/components/reuseable/ItemsCarousel";
 
-const Sales = () => {
-  const dummyArray = Array.from({ length: 10 }, (v, k) => k);
-
+const Sales = ({ products }) => {
   return (
     <div className="w-full flex flex-col items-center justify-center relative my-11">
       <ItemsCarousel title={"Today's"} text={"Flash Sales"}>
-        {dummyArray.map((item) => (
+        {products.map((item) => (
           <div className="embla__slide" key={item}>
-            <ProductItem />
+            <ProductItem
+              key={item._id}
+              id={item._id}
+              name={item.name}
+              images={item.images}
+              description={item.description}
+              excerpt={item.excerpt}
+              price={item.price}
+            />
           </div>
         ))}
       </ItemsCarousel>

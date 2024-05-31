@@ -1,16 +1,20 @@
 import Link from "next/link";
-import Product from "../_components/Product";
+import ProductItem from "../_components/ProductItem";
 import React from "react";
 import { MdAdd } from "react-icons/md";
+import Product from "@/lib/schemas/Product";
+import { fetchAllProducts } from "@/utils/fetchAllItems";
 
-const AllProductsPage = () => {
-  const dummyArray = Array.from({ length: 10 }, (v, k) => k);
+export const dynamic = "force-dynamic";
+
+const AllProductsPage = async () => {
+  const products = await fetchAllProducts();
 
   return (
     <div className="w-full h-full">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold font-sans">All Products</h1>
-        <p>Total: {dummyArray.length}</p>
+        <p>Total: {products.length}</p>
       </div>
 
       <Link
@@ -24,8 +28,15 @@ const AllProductsPage = () => {
       </Link>
 
       <div className="products-container container flex items-center justify-center flex-col gap-4 mt-6">
-        {dummyArray.map((i) => {
-          return <Product key={i} />;
+        {products.map((product) => {
+          return (
+            <ProductItem
+              key={product._id}
+              name={product.name}
+              images={product.images}
+              id={product._id}
+            />
+          );
         })}
       </div>
     </div>

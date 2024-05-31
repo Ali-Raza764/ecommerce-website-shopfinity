@@ -1,30 +1,43 @@
 import ItemsCarousel from "@/components/reuseable/ItemsCarousel";
 import ProductItem from "@/components/reuseable/ProductItem";
 
-
-const AllProductsCarousel = () => {
-  const dummyArray = Array.from({ length: 10 }, (v, k) => k);
-
+const AllProductsCarousel = ({ products }) => {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-center relative my-11">
-        <ItemsCarousel title={"Our Products"} text={"Explore Our Products"}>
-          {dummyArray.map((item) => (
+        <ItemsCarousel
+          title={"Checkout"}
+          text={"Our Products"}
+          showButtons={true}
+        >
+          {products.map((item) => (
             <div className="embla__slide" key={item}>
-              <div className="flex flex-col items-center justify-center">
-                <ProductItem />
-              </div>
+              <ProductItem
+                key={item._id}
+                id={item._id}
+                name={item.name}
+                images={item.images}
+                description={item.description}
+                excerpt={item.excerpt}
+                price={item.price}
+              />
             </div>
           ))}
         </ItemsCarousel>
       </div>
       <div className="w-full flex flex-col items-center justify-center relative my-11">
-        <ItemsCarousel>
-          {dummyArray.map((item) => (
+        <ItemsCarousel showButtons={true}>
+          {products.map((item) => (
             <div className="embla__slide" key={item}>
-              <div className="flex flex-col items-center justify-center">
-                <ProductItem />
-              </div>
+              <ProductItem
+                key={item._id}
+                id={item._id}
+                name={item.name}
+                images={item.images}
+                description={item.description}
+                excerpt={item.excerpt}
+                price={item.price}
+              />
             </div>
           ))}
         </ItemsCarousel>

@@ -4,6 +4,7 @@ import links from "./links";
 import Link from "next/link";
 import { FaCross, FaList, FaUser } from "react-icons/fa";
 import { useRef } from "react";
+import { UserButton } from "@clerk/nextjs";
 
 const AdminNavbar = () => {
   const navRef = useRef();
@@ -49,10 +50,7 @@ const AdminNavbar = () => {
           </div>
         </div>
         <div className="user w-full flex items-center gap-3 p-2 rounded-md">
-          <div className="p-2 bg-gray-400 rounded-full">
-            <FaUser size={30} />
-          </div>
-          <h2 className="text-2xl font-semibold">Ali Raza</h2>
+       <UserButton />
         </div>
       </nav>
     </>

@@ -1,19 +1,24 @@
 import Link from "next/link";
 import React from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { MdComputer } from "react-icons/md";
+import DeleteItemButton from "./DeleteItemButton";
 
-const CategoryItem = ({ name, icon, link }) => {
+const CategoryItem = ({ name, link, id }) => {
   return (
-    <div className="w-full h-12 p-2 flex items-center justify-between gap-4 border shadow hover:-translate-y-2 transition-all duration-300 hover:bg-gray-100">
-      {icon}
+    <div className="w-full h-12 p-2 flex items-center justify-between gap-4 border shadow duration-300 hover:bg-gray-100">
+      <MdComputer size={35} />
       <p className="font-semibold text-xl">{name}</p>
       <div className="controls flex items-center gap-3">
-        <Link href={`/admin/product/edit/productid`}>
+        <Link href={link}>
           <FaEdit size={20} />
         </Link>
-        <button>
-          <FaTrash size={20} />
-        </button>
+        <DeleteItemButton itemId={id} type={"category"} name={name}>
+          <FaTrash
+            size={20}
+            className="hover:text-red-500 hover:scale-110 transition"
+          />
+        </DeleteItemButton>
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
 import PaginationControls from "@/components/reuseable/PaginationControls";
 import ProductItem from "@/components/reuseable/ProductItem";
+import { fetchAllProducts } from "@/utils/fetchAllItems";
 import { Suspense } from "react";
 
-const AllProducts = ({ searchParams }) => {
-  const dummyArray = Array.from({ length: 30 }, (v, k) => k);
+const AllProducts = async ({ searchParams }) => {
+  const products = await fetchAllProducts();
 
   // * Code to control server side pagination.
   const page = searchParams["page"] ?? "1";
@@ -12,22 +13,32 @@ const AllProducts = ({ searchParams }) => {
   const start = (Number(page) - 1) * Number(per_page);
   const end = start + Number(per_page);
 
-  const entries = dummyArray.slice(start, end);
+  const entries = products.slice(start, end);
 
   return (
     <div className="w-full min-h-screen md:py-6 py-4">
-      <div className="container grid grid-cols-2 sm:grid-cols-3 grid-items-center gap-2 md:flex items-center justify-center flex-wrap">
-        {entries.map((i) => {
-          return <ProductItem key={i} />;
+      <div className="container grid grid-cols-2 sm:grid-cols-3 grid-items-center gap-2 md:flex items-center flex-wrap">
+        {entries.map((item) => {
+          return (
+            <ProductItem
+              key={item._id}
+              id={item._id}
+              name={item.name}
+              images={item.images}
+              description={item.description}
+              excerpt={item.excerpt}
+              price={item.price}
+            />
+          );
         })}
       </div>
 
       <div className="pagination my-6">
         <Suspense fallback={<div>Loading...</div>}>
           <PaginationControls
-            hasNextpage={end < dummyArray.length}
+            hasNextpage={end < products.length}
             hasPreviousPage={start > 0}
-            dataLength={dummyArray.length}
+            dataLength={products.length}
             query={""}
             page={page}
             per_page={per_page}
