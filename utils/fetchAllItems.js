@@ -1,7 +1,7 @@
-import Category from "@/lib/schemas/Category";
+import Category from "@/lib/models/Category";
 import dbConnect from "./dbConnect";
-import Product from "@/lib/schemas/Product";
-import FeaturedProduct from "@/lib/schemas/FeaturedProduct";
+import Product from "@/lib/models/Product";
+import FeaturedProduct from "@/lib/models/FeaturedProduct";
 
 await dbConnect();
 

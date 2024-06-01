@@ -16,7 +16,7 @@ const Product = ({ name, images, id }) => {
           className="rounded-full h-10 w-10"
         />
         <h3>{name}</h3>
-        <p>
+        <p className="w-24 sm:w-auto overflow-auton-ellipsis">
           Id: <strong>{id}</strong>
         </p>
       </div>

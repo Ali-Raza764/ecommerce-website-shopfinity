@@ -1,6 +1,6 @@
 "use server";
-import FeaturedProduct from "@/lib/schemas/FeaturedProduct";
-import Product from "@/lib/schemas/Product";
+import FeaturedProduct from "@/lib/models/FeaturedProduct";
+import Product from "@/lib/models/Product";
 import checkRole from "@/utils/checkRole";
 import dbConnect from "@/utils/dbConnect";
 

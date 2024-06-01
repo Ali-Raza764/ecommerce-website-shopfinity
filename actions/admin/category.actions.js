@@ -1,5 +1,5 @@
 "use server";
-import Category from "@/lib/schemas/Category";
+import Category from "@/lib/models/Category";
 import checkRole from "@/utils/checkRole";
 import dbConnect from "@/utils/dbConnect";
 

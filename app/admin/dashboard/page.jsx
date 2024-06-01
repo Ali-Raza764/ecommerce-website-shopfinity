@@ -1,10 +1,7 @@
-import checkRole from "@/utils/checkRole";
-import { redirect } from "next/navigation";
+
 
 export default async function AdminDashboard() {
-  // if (!checkRole("admin")) {
-  //   redirect("/");
-  // }
+
 
   return (
     <>

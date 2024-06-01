@@ -2,7 +2,7 @@ import React from "react";
 import CategoryItem from "../_components/CategoryItem";
 import { MdAdd } from "react-icons/md";
 import Link from "next/link";
-import Category from "@/lib/schemas/Category";
+import Category from "@/lib/models/Category";
 
 export const dynamic = "force-dynamic";
 

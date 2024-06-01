@@ -4,6 +4,7 @@ import Search from "@/components/reuseable/Search";
 import UserControls from "./UserControls";
 import SaleHeader from "./SaleHeader";
 import MobileNavbar from "./MobileNavbar";
+import Image from "next/image";
 
 const Header = ({ children }) => {
   return (
@@ -16,7 +17,9 @@ const Header = ({ children }) => {
             <MobileNavbar />
           </div>
 
-          <div className="logo font-bold sm:text-xl md:ml-2 ml-1">SHOPFINITY</div>
+          <div className="logo font-bold sm:text-xl md:ml-2 ml-1 flex items-center"> 
+          <Image src={'/images/icon.svg'} alt="logo" width={50} height={50} className="cursor-pointer" />
+          SHOPFINITY</div>
 
           <div className="simple-nav hidden lg:block">
             <Navbar />

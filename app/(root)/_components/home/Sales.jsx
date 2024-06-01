@@ -8,12 +8,10 @@ const Sales = ({ products }) => {
         {products.map((item) => (
           <div className="embla__slide" key={item}>
             <ProductItem
-              key={item._id}
-              id={item._id}
+              key={item._id.toString()}
+              id={item._id.toString()}
               name={item.name}
               images={item.images}
-              description={item.description}
-              excerpt={item.excerpt}
               price={item.price}
             />
           </div>

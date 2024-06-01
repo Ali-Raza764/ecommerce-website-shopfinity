@@ -2,7 +2,7 @@ import Link from "next/link";
 import ProductItem from "../_components/ProductItem";
 import React from "react";
 import { MdAdd } from "react-icons/md";
-import Product from "@/lib/schemas/Product";
+import Product from "@/lib/models/Product";
 import { fetchAllProducts } from "@/utils/fetchAllItems";
 
 export const dynamic = "force-dynamic";
@@ -31,10 +31,10 @@ const AllProductsPage = async () => {
         {products.map((product) => {
           return (
             <ProductItem
-              key={product._id}
+              key={product._id.toString()}
+              id={product._id.toString()}
               name={product.name}
               images={product.images}
-              id={product._id}
             />
           );
         })}

@@ -1,5 +1,5 @@
 import CategoryForm from "../../CategoryForm";
-import Category from "@/lib/schemas/Category";
+import Category from "@/lib/models/Category";
 
 const EditCategory = async ({ params }) => {
   const category = await Category.findById(params.id);

@@ -45,10 +45,12 @@ const ProductForm = ({ id, initailData, categories }) => {
       if (editForm) {
         console.log("Updating Product");
         const res = await updateProduct(id, payload);
+        console.log(res);
         revalidate("/admin/products");
         res.status === 200 && router.push("/admin/products");
       } else if (newForm) {
         const res = await createProduct(payload);
+        console.log(res);
         revalidate("/admin/products");
         res.status === 200 && router.push("/admin/products");
       }
@@ -58,8 +60,6 @@ const ProductForm = ({ id, initailData, categories }) => {
       setLoading(false);
     }
   };
-
-  console.log(categories);
 
   return (
     <div className="w-full h-max shadow-md shadow-gray-400 px-4 py-6">

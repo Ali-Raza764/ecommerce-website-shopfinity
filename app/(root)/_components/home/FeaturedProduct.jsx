@@ -18,7 +18,7 @@ const FeaturedProduct = async () => {
           {product?.relatedText}
         </div>
         <Link
-          href={"/productdetails" + product.productId}
+          href={"/productdetails" + product.productId.toString()}
           className="bg-green-500  text-white px-4 py-2 text-lg w-32 rounded-md"
         >
           Buy Now

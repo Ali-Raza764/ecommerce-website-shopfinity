@@ -3,6 +3,7 @@ import { CiHeart } from "react-icons/ci";
 import SignInButton from "@/components/reuseable/SignInButton";
 import { auth } from "@clerk/nextjs/server";
 import { SignOutButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 const UserControls = () => {
   const { userId } = auth();
@@ -10,13 +11,12 @@ const UserControls = () => {
     <div>
       {userId ? (
         <div className="flex items-center justify-end gap-3">
-          <button>
+          <Link href={"/cart"}>
             <PiShoppingCartThin size={30} />
-          </button>
-          <button>
+          </Link>
+          <Link href={"/wishlist"}>
             <CiHeart size={30} />
-          </button>
-
+          </Link>
           {/* <UserButton /> */}
           <SignOutButton />
         </div>

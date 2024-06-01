@@ -1,3 +1,3 @@
-1. Implement Admin route authentication and server action authentication.
-2. Find a better cdarousel for home hero that is faster and better.
-3. Implement Admin dashboard further design and actions.
+1. Implement Cart and Wishlist functionalities.
+2. Admin panel Error Handling
+3. Create hero products system.

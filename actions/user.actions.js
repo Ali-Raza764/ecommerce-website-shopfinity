@@ -1,5 +1,5 @@
 "use server";
-import User from "@/lib/schemas/User";
+import User from "@/lib/models/User";
 import dbConnect from "@/utils/dbConnect";
 import { auth } from "@clerk/nextjs/server";
 

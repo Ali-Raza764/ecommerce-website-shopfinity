@@ -9,6 +9,7 @@ import SectionSeparator from "@/components/reuseable/SectionSeparator";
 import { Suspense } from "react";
 import { fetchAllProducts } from "@/utils/fetchAllItems";
 
+
 const Home = async () => {
   const products = await fetchAllProducts();
 

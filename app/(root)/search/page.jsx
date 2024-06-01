@@ -44,15 +44,13 @@ const SearchPage = async ({ searchParams }) => {
 
       <div className="container grid grid-cols-2 sm:grid-cols-3 grid-items-center gap-2 md:flex items-center justify-center flex-wrap">
         {/* <div className="container flex items-center flex-wrap justify-center"> */}
-        {entries.map((item, i) => {
+        {entries.map((item) => {
           return (
             <ProductItem
-              key={item._id}
-              id={item._id}
+              key={item._id.toString()}
+              id={item._id.toString()}
               name={item.name}
               images={item.images}
-              description={item.description}
-              excerpt={item.excerpt}
               price={item.price}
             />
           );

@@ -6,15 +6,23 @@ import {
 } from "react-icons/ai";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
+import AddToCartButton from "../../../../components/reuseable/AddToCartButton";
 
-const ProductDetails = () => {
+const ProductDetails = ({
+  id,
+  name,
+  description,
+  price,
+  category,
+  excerpt,
+}) => {
   return (
     <div className="lg:w-1/2 w-full md::pl-10 md::py-6 mt-6 md:mt-0">
       <h2 className="text-sm title-font text-gray-500 tracking-widest">
         BRAND NAME
       </h2>
       <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-        The Catcher in the Rye
+        {name}
       </h1>
       <div className="flex mb-4">
         <span className="flex items-center">
@@ -31,13 +39,7 @@ const ProductDetails = () => {
           <AiOutlineSearch className="text-gray-500" />
         </span>
       </div>
-      <p className="leading-relaxed">
-        Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha
-        taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole
-        raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric.
-        Gastropub blue bottle austin listicle pour-over, neutra jean shorts
-        keytar banjo tattooed umami cardigan.
-      </p>
+      <p className="leading-relaxed">{excerpt}</p>
       <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
         <div className="flex">
           <span className="mr-3">Color</span>
@@ -72,15 +74,13 @@ const ProductDetails = () => {
       </div>
       <div className="w-full flex items-center justify-between">
         <span className="title-font font-medium text-2xl text-gray-900">
-          $58.00
+          {price}$
         </span>
         <div className="flex items-center gap-3">
           <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded transition">
             Buy Now
           </button>
-          <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded transition">
-            Add to Cart
-          </button>
+          <AddToCartButton id={id} text={true}/>
           <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 hover:scale-110 transition">
             <FaHeart />
           </button>

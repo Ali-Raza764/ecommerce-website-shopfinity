@@ -1,5 +1,5 @@
 "use server";
-import Product from "@/lib/schemas/Product";
+import Product from "@/lib/models/Product";
 import checkRole from "@/utils/checkRole";
 import dbConnect from "@/utils/dbConnect";
 

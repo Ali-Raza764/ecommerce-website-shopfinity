@@ -1,7 +1,7 @@
 import React from "react";
 import ProductForm from "../../../_components/ProductForm";
-import Product from "@/lib/schemas/Product";
-import Category from "@/lib/schemas/Category";
+import Product from "@/lib/models/Product";
+import Category from "@/lib/models/Category";
 
 const EditProduct = async ({ params }) => {
   const product = await Product.findById(params.id);
