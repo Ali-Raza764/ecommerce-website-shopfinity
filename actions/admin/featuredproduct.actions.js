@@ -1,14 +1,14 @@
 "use server";
+import { auth } from "@/auth";
 import FeaturedProduct from "@/lib/models/FeaturedProduct";
 import Product from "@/lib/models/Product";
-import checkRole from "@/utils/checkRole";
 import dbConnect from "@/utils/dbConnect";
 
-dbConnect();
 
 export const createFeaturedProduct = async (payload) => {
-  //* Validate the admin first to protect tbis action
-  if (!checkRole("admin")) {
+  //* Validate the admin first to protect this action
+  const session = await auth();
+  if (!session) {
     return JSON.parse(
       JSON.stringify({
         message: "Unauthorized",
@@ -16,6 +16,8 @@ export const createFeaturedProduct = async (payload) => {
       })
     );
   }
+  await dbConnect();
+
   const resp = await Product.findById(payload.productId);
   const image = resp.images[0];
 

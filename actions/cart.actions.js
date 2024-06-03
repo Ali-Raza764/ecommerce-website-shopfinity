@@ -1,13 +1,11 @@
 "use server";
+import { auth } from "@/auth";
 import Cart from "@/lib/models/Cart";
 import dbConnect from "@/utils/dbConnect";
-import { auth, currentUser } from "@clerk/nextjs/server";
-
-dbConnect();
 
 export const addToCart = async (productId) => {
-  const { userId } = auth();
-  if (!userId) {
+  const session = await auth();
+  if (!session) {
     return JSON.parse(
       JSON.stringify({
         message: "Unauthorized",
@@ -15,15 +13,16 @@ export const addToCart = async (productId) => {
       })
     );
   }
+  await dbConnect();
 
-  // Get the user email from the database using the logged-in user information
-  const { emailAddresses } = await currentUser();
-  const email = emailAddresses[0].emailAddress;
+  const userId = session.user.id;
 
-  const cart = await Cart.findOne({ userEmail: email });
+  const cart = await Cart.findOne({ userId });
 
   if (cart) {
-    const productIndex = cart.products.findIndex(p => p.productId.toString() === productId);
+    const productIndex = cart.products.findIndex(
+      (p) => p.productId.toString() === productId
+    );
     if (productIndex > -1) {
       cart.products[productIndex].quantity += 1;
     } else {
@@ -38,7 +37,10 @@ export const addToCart = async (productId) => {
     );
   }
 
-  const newCart = await Cart.create({ userEmail: email, products: [{ productId, quantity: 1 }] });
+  const newCart = await Cart.create({
+    userId,
+    products: [{ productId, quantity: 1 }],
+  });
   if (newCart) {
     return JSON.parse(
       JSON.stringify({
@@ -56,8 +58,8 @@ export const addToCart = async (productId) => {
   }
 };
 export const removeFromCart = async (productId) => {
-  const { userId } = auth();
-  if (!userId) {
+  const session = await auth();
+  if (!session) {
     return JSON.parse(
       JSON.stringify({
         message: "Unauthorized",
@@ -65,14 +67,16 @@ export const removeFromCart = async (productId) => {
       })
     );
   }
+  await dbConnect();
 
-  const { emailAddresses } = await currentUser();
-  const email = emailAddresses[0].emailAddress;
+  const userId = session.user.id;
 
   const cart = await Cart.findOne({ userEmail: email });
 
   if (cart) {
-    const productIndex = cart.products.findIndex(p => p.productId.toString() === productId);
+    const productIndex = cart.products.findIndex(
+      (p) => p.productId.toString() === productId
+    );
     if (productIndex > -1) {
       if (cart.products[productIndex].quantity > 1) {
         cart.products[productIndex].quantity -= 1;

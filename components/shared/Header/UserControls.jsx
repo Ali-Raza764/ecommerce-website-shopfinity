@@ -1,15 +1,15 @@
 import { PiShoppingCartThin } from "react-icons/pi";
 import { CiHeart } from "react-icons/ci";
 import SignInButton from "@/components/reuseable/SignInButton";
-import { auth } from "@clerk/nextjs/server";
-import { SignOutButton } from "@clerk/nextjs";
 import Link from "next/link";
+import { auth } from "@/auth";
+import { FaUserAlt } from "react-icons/fa";
 
-const UserControls = () => {
-  const { userId } = auth();
+const UserControls = async() => {
+  const session = await auth();
   return (
     <div>
-      {userId ? (
+      {session ? (
         <div className="flex items-center justify-end gap-3">
           <Link href={"/cart"}>
             <PiShoppingCartThin size={30} />
@@ -17,13 +17,16 @@ const UserControls = () => {
           <Link href={"/wishlist"}>
             <CiHeart size={30} />
           </Link>
-          {/* <UserButton /> */}
-          <SignOutButton />
+          
+          <Link href={"/profile"}>
+            <FaUserAlt size={30} />
+          </Link>
+
         </div>
       ) : (
         <div className="flex items-center justify-end gap-2">
           <SignInButton
-            href={"/sign-in"}
+            href={"/auth/signin"}
             className={
               "shadow p-2 md:px-3 rounded border hover:bg-gray-100 transition "
             }
@@ -31,7 +34,7 @@ const UserControls = () => {
             Sign In
           </SignInButton>
           <SignInButton
-            href={"/sign-up"}
+            href={"/auth/signup"}
             className={
               "bg-black text-white hover:bg-gray-800 transition p-2 md:px-3 rounded-md font-sans"
             }

@@ -1,18 +1,20 @@
 import ProductItem from "@/components/reuseable/ProductItem";
-import { currentUser } from "@clerk/nextjs/server";
 import dbConnect from "@/utils/dbConnect";
 import WishList from "@/lib/models/WishList";
+import { auth } from "@/auth";
 
-const getWishList = async (email) => {
+const getWishList = async (userId) => {
   await dbConnect();
-  const wishlist = await WishList.findOne({ userEmail: email }).populate("products.productId");
+  const wishlist = await WishList.findOne({ userId }).populate(
+    "products.productId"
+  );
   return wishlist ? wishlist : null;
 };
 
 const WishListPage = async () => {
-  const { emailAddresses } = await currentUser();
-  const email = emailAddresses[0].emailAddress;
-  const list = await getWishList(email);
+  const session = await auth();
+
+  const list = await getWishList(session.user.id);
 
   return (
     <div className="w-full h-full px-3 py-6">

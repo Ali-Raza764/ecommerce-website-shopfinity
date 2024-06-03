@@ -5,6 +5,7 @@ import UserControls from "./UserControls";
 import SaleHeader from "./SaleHeader";
 import MobileNavbar from "./MobileNavbar";
 import Image from "next/image";
+import { FaSpinner } from "react-icons/fa";
 
 const Header = ({ children }) => {
   return (
@@ -31,7 +32,10 @@ const Header = ({ children }) => {
                 <Search />
               </Suspense>
             </div>
+            <Suspense fallback={<FaSpinner className="animate-spin" />}>
+
             <UserControls />
+            </Suspense>
           </div>
         </div>
       </header>

@@ -1,13 +1,13 @@
 "use server";
+import { auth } from "@/auth";
 import WishList from "@/lib/models/WishList";
 import dbConnect from "@/utils/dbConnect";
-import { auth, currentUser } from "@clerk/nextjs/server";
 
 dbConnect();
 
 export const addToWishList = async (productId) => {
-  const { userId } = auth();
-  if (!userId) {
+  const session = await auth();
+  if (!session) {
     return JSON.parse(
       JSON.stringify({
         message: "Unauthorized",
@@ -16,10 +16,9 @@ export const addToWishList = async (productId) => {
     );
   }
 
-  const { emailAddresses } = await currentUser();
-  const email = emailAddresses[0].emailAddress;
+  const userId = session.user.id;
 
-  const wishlist = await WishList.findOne({ userEmail: email });
+  const wishlist = await WishList.findOne({ userId });
 
   if (wishlist) {
     const productIndex = wishlist.products.findIndex(
@@ -45,7 +44,7 @@ export const addToWishList = async (productId) => {
   }
 
   const newWishList = await WishList.create({
-    userEmail: email,
+    userId,
     products: [{ productId }],
   });
   if (newWishList) {
@@ -65,8 +64,8 @@ export const addToWishList = async (productId) => {
   }
 };
 export const removeFromWishList = async (productId) => {
-  const { userId } = auth();
-  if (!userId) {
+  const session = await auth();
+  if (!session) {
     return JSON.parse(
       JSON.stringify({
         message: "Unauthorized",
@@ -75,10 +74,9 @@ export const removeFromWishList = async (productId) => {
     );
   }
 
-  const { emailAddresses } = await currentUser();
-  const email = emailAddresses[0].emailAddress;
+  const userId = session.user.id;
 
-  const wishlist = await WishList.findOne({ userEmail: email });
+  const wishlist = await WishList.findOne({ userId });
 
   if (wishlist) {
     const productIndex = wishlist.products.findIndex(

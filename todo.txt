@@ -1,3 +1,1 @@
-1. Implement Cart and Wishlist functionalities.
-2. Admin panel Error Handling
-3. Create hero products system.
+1. Migrate from clerk to authjs.

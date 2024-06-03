@@ -2,7 +2,6 @@ import Link from "next/link";
 import ProductItem from "../_components/ProductItem";
 import React from "react";
 import { MdAdd } from "react-icons/md";
-import Product from "@/lib/models/Product";
 import { fetchAllProducts } from "@/utils/fetchAllItems";
 
 export const dynamic = "force-dynamic";

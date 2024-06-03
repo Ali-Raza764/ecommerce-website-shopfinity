@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { CiShoppingCart } from "react-icons/ci";
 
-const AddToCartButton = ({ id, text, className }) => {
+const AddToCartButton = ({ id, text, className, icon }) => {
   const [added, setAdded] = useState(false);
-
+  const showIcon = icon || true
   const addCart = async (id) => {
     try {
       let res;
@@ -38,7 +38,7 @@ const AddToCartButton = ({ id, text, className }) => {
       }
       className={`${className} flex items-center gap-3`}
     >
-      {text && "Add to cart"} <CiShoppingCart size={30} />
+      {text && "Add to cart"} {showIcon && <CiShoppingCart size={25} />}
     </button>
   );
 };

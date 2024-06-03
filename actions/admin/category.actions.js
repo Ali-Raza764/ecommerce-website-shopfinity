@@ -1,13 +1,12 @@
 "use server";
+import { auth } from "@/auth";
 import Category from "@/lib/models/Category";
-import checkRole from "@/utils/checkRole";
 import dbConnect from "@/utils/dbConnect";
-
-dbConnect();
 
 export const createCategory = async (payload) => {
   //* Validate the admin first to protect tbis action
-  if (!checkRole("admin")) {
+  const session = await auth();
+  if (!session) {
     return JSON.parse(
       JSON.stringify({
         message: "Unauthorized",
@@ -16,6 +15,7 @@ export const createCategory = async (payload) => {
     );
   }
 
+  await dbConnect();
   const categories = await Category.create(payload);
   const data = JSON.stringify(categories);
 
@@ -29,7 +29,8 @@ export const createCategory = async (payload) => {
 };
 export const updateCategory = async (id, payload) => {
   //* Validate the admin first to protect tbis action
-  if (!checkRole("admin")) {
+  const session = await auth();
+  if (!session) {
     return JSON.parse(
       JSON.stringify({
         message: "Unauthorized",
@@ -37,6 +38,8 @@ export const updateCategory = async (id, payload) => {
       })
     );
   }
+
+  await dbConnect();
 
   const categories = await Category.findByIdAndUpdate(id, payload);
 
@@ -50,7 +53,8 @@ export const updateCategory = async (id, payload) => {
 
 export const deleteCategory = async (id) => {
   //* Validate the admin first to protect tbis action
-  if (!checkRole("admin")) {
+  const session = await auth();
+  if (!session) {
     return JSON.parse(
       JSON.stringify({
         message: "Unauthorized",
@@ -58,6 +62,8 @@ export const deleteCategory = async (id) => {
       })
     );
   }
+
+  await dbConnect();
 
   const products = await Category.findByIdAndDelete(id);
   const data = JSON.stringify(products);

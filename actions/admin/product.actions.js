@@ -1,13 +1,12 @@
 "use server";
+import { auth } from "@/auth";
 import Product from "@/lib/models/Product";
-import checkRole from "@/utils/checkRole";
 import dbConnect from "@/utils/dbConnect";
 
-dbConnect();
-
 export const createProduct = async (payload) => {
-  //* Validate the admin first to protect tbis action
-  if (!checkRole("admin")) {
+  //* Validate the admin first to protect this action
+  const session = await auth();
+  if (!session) {
     return JSON.parse(
       JSON.stringify({
         message: "Unauthorized",
@@ -15,6 +14,8 @@ export const createProduct = async (payload) => {
       })
     );
   }
+
+  await dbConnect();
 
   const products = await Product.create(payload);
   const data = JSON.stringify(products);
@@ -28,8 +29,9 @@ export const createProduct = async (payload) => {
   );
 };
 export const updateProduct = async (id, payload) => {
-  //* Validate the admin first to protect tbis action
-  if (!checkRole("admin")) {
+  //* Validate the admin first to protect this action
+  const session = await auth();
+  if (!session) {
     return JSON.parse(
       JSON.stringify({
         message: "Unauthorized",
@@ -37,6 +39,8 @@ export const updateProduct = async (id, payload) => {
       })
     );
   }
+
+  await dbConnect();
 
   const products = await Product.findByIdAndUpdate(id, payload);
   const data = JSON.stringify(products);
@@ -50,8 +54,9 @@ export const updateProduct = async (id, payload) => {
   );
 };
 export const deleteProduct = async (id) => {
-  //* Validate the admin first to protect tbis action
-  if (!checkRole("admin")) {
+  //* Validate the admin first to protect this action
+  const session = await auth();
+  if (!session) {
     return JSON.parse(
       JSON.stringify({
         message: "Unauthorized",
@@ -59,6 +64,8 @@ export const deleteProduct = async (id) => {
       })
     );
   }
+
+  await dbConnect();
 
   const products = await Product.findByIdAndDelete(id);
   const data = JSON.stringify(products);

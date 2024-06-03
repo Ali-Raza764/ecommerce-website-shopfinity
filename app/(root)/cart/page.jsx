@@ -1,23 +1,20 @@
 import dbConnect from "@/utils/dbConnect";
-import { currentUser } from "@clerk/nextjs/server";
 import Cart from "@/lib/models/Cart";
 import CartItem from "./CartItem";
+import { auth } from "@/auth";
 
-const getCart = async (email) => {
+const getCart = async (userId) => {
   await dbConnect();
-  const cart = await Cart.findOne({ userEmail: email }).populate(
-    "products.productId"
-  );
+  const cart = await Cart.findOne({ userId }).populate("products.productId");
   if (cart) {
     return cart;
   }
 };
 
 const CartPage = async () => {
-  const { emailAddresses } = await currentUser();
-  const email = emailAddresses[0].emailAddress;
-  const cart = await getCart(email);
-  console.log(cart);
+  const session = await auth();
+  const cart = await getCart(session.user.id);
+  
   return (
     <div className="w-full h-full px-3 py-6">
       <h1 className="text-4xl font-bold mb-3">Cart 🛒</h1>

@@ -15,9 +15,9 @@ const ProductItem = ({ name, price, images, id }) => {
             <WishListButton id={id} size={30} />
           </div>
 
-          <button className="absolute transition opacity-0 flex items-center justify-center drop-shadow-md translate translate-y-1/4 group-hover:opacity-100 group-hover:-translate-y-5 hover:scale-110  bg-white rounded-full p-1 right-1 bottom-1">
+          <div className="absolute transition opacity-0 flex items-center justify-center drop-shadow-md translate translate-y-1/4 group-hover:opacity-100 group-hover:-translate-y-5 hover:scale-110  bg-white rounded-full p-1 right-1 bottom-1">
             <AddToCartButton id={id} className={'p-1 bg-white rounded-full'} />
-          </button>
+          </div>
         </div>
       </div>
       <Link href={`/productdetails/${id}`}>

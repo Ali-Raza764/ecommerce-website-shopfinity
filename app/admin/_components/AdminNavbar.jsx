@@ -1,12 +1,14 @@
 "use client";
-import { MdClose, MdDashboard, MdList, MdMenu } from "react-icons/md";
+import { MdClose, MdDashboard, MdMenu } from "react-icons/md";
 import links from "./links";
 import Link from "next/link";
-import { FaCross, FaList, FaUser } from "react-icons/fa";
 import { useRef } from "react";
-import { UserButton } from "@clerk/nextjs";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import SignOutButton from "@/app/auth/components/SignOut";
 
 const AdminNavbar = () => {
+  const { data, status } = useSession();
   const navRef = useRef();
   const toggleSidebar = () => {
     navRef.current.classList.toggle("-left-[1000px]");
@@ -50,8 +52,19 @@ const AdminNavbar = () => {
           </div>
         </div>
         <div className="user w-full flex items-center gap-3 p-2 rounded-md">
-       <UserButton />
+          {status === "authenticated" && (
+            <>
+              <Image
+                src={data?.user?.image}
+                height={50}
+                width={50}
+                className="rounded-full"
+              />
+              <h3>{data?.user?.name}</h3>
+            </>
+          )}
         </div>
+        <SignOutButton />
       </nav>
     </>
   );
