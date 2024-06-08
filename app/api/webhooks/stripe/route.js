@@ -1,7 +1,8 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
+import { createOrder } from "@/actions/admin/order.actions";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.NEXT_STRIPE_SECRET_KEY);
 export async function POST(req, res) {
   const payload = await req.text();
   const response = JSON.parse(payload);
@@ -18,8 +19,21 @@ export async function POST(req, res) {
       process.env.STRIPE_WEBHOOK_SECRET
     );
 
-    console.log("event:", event.type, event.data); //checkout.session.completed holds the metadata
-
+    if (event.type == "checkout.session.completed") {
+      const userId = event.data.object.metadata.userId;
+      const productId = event.data.object.metadata.productId;
+      const shippingAddress = event.data.object.customer_details?.address;
+      const pricePaid = event.data.object.amount_total;
+      // console.log(userId, productId, shippingAddress, pricePaid);
+      const res = await createOrder({
+        userId,
+        productId,
+        shippingAddress,
+        pricePaid,
+        quantity: 1,
+      });
+      // console.log(res);
+    }
     return NextResponse.json({
       status: "success",
       event: event.type,

@@ -6,7 +6,7 @@ import Product from "@/lib/models/Product";
 import dbConnect from "@/utils/dbConnect";
 
 const getProduct = async (id) => {
-  dbConnect();
+  await dbConnect();
   const res = await Product.findById(id);
   if (res) {
     return res;
@@ -16,7 +16,6 @@ const getProduct = async (id) => {
 
 const ProductDetailsPage = async ({ params }) => {
   const product = await getProduct(params.id);
-  console.log(product.images);
   return (
     <main className="w-full min-h-screen px-3 md:px-11 py-8">
       <section className="text-gray-600 w-full flex lg:flex-row flex-col lg:gap-3">
@@ -28,6 +27,7 @@ const ProductDetailsPage = async ({ params }) => {
           price={product.price}
           category={product.category}
           excerpt={product.excerpt}
+          images={product.images}
         />
       </section>
       <section aria-label="related products" className="w-full my-6 ">

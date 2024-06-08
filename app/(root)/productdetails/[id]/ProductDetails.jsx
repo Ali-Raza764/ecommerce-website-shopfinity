@@ -6,7 +6,8 @@ import {
 } from "react-icons/ai";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
-import AddToCartButton from "../../../../components/reuseable/AddToCartButton";
+import AddToCartButton from "@/components/reuseable/AddToCartButton";
+import BuyItemButton from "@/components/reuseable/BuyItemButton";
 
 const ProductDetails = ({
   id,
@@ -15,6 +16,7 @@ const ProductDetails = ({
   price,
   category,
   excerpt,
+  images,
 }) => {
   return (
     <div className="lg:w-1/2 w-full md::pl-10 md::py-6 mt-6 md:mt-0">
@@ -77,17 +79,33 @@ const ProductDetails = ({
           {price}$
         </span>
         <div className="flex items-center gap-3">
-          <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded transition">
-            Buy Now
-          </button>
-          <AddToCartButton id={id} text={true} className={'bg-gray-900 hover:bg-gray-700 transition px-4 p-2 rounded-md text-white'} icon={false}/>
+          <BuyItemButton
+            className={
+              "flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded transition"
+            }
+            data={{
+              productId: id,
+              name,
+              unitPrice: price,
+              quantity: 1,
+              images,
+            }}
+          />
+          <AddToCartButton
+            id={id}
+            text={true}
+            className={
+              "bg-gray-900 hover:bg-gray-700 transition px-4 p-2 rounded-md text-white"
+            }
+            icon={false}
+          />
           <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 hover:scale-110 transition">
             <FaHeart />
           </button>
         </div>
       </div>
     </div>
-  );icon
+  );
 };
 
 export default ProductDetails;
